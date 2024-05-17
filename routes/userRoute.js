@@ -13,6 +13,8 @@ import {
 } from "../controller/userController.js";
 import { generateotp, verifyotp } from "../controller/otp.js";
 import { isAuthenticatedUser } from "../middleware/auth.js";
+import {contact} from "../controller/contactus.js"
+import { scheduleEmail }from '../controller/emailController.js'
 
 const router = express.Router();
 
@@ -29,5 +31,7 @@ router.route("/password/update").put(isAuthenticatedUser, updatePassword);
 router.get("/logout", logout);
 router.post("/otp", generateotp);
 router.post("/verifyotp", verifyotp);
+router.post("/contactus",contact)
+router.post('/schedule-email',scheduleEmail);
 
 export default router;
